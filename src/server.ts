@@ -1,1 +1,3 @@
-console.log("Hello World");
+import app from "./App";
+
+app.listen(3333);
