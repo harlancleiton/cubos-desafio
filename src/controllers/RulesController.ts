@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 
 import { Rule } from '../models/Rule';
 
-class RulesController {
+export class RulesController {
   public index(req: Request, res: Response): any {
     const { start, end } = req.query;
 
