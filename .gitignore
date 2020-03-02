@@ -5,3 +5,6 @@ src/database/*.json
 .env
 
 dist
+
+coverage
+*.lcov
