@@ -14,7 +14,7 @@ describe('Rule', () => {
         end: '13:00',
       });
 
-    expect(response.status).toEqual(200);
+    expect(response.status).toEqual(201);
     expect(response.body).toHaveProperty('id');
   });
 

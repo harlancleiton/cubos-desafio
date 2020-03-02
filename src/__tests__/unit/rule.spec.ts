@@ -1,7 +1,7 @@
 import { Rule } from '../../models/Rule';
 import { RuleType } from '../../types/RuleType';
 
-describe('Role', () => {
+describe('Rule', () => {
   it('check if a daily rule is part of filter', () => {
     const rule = Rule.create<Rule>({
       type: RuleType.DAILY,

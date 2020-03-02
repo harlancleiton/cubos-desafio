@@ -22,7 +22,7 @@ export class RulesController {
 
     const rule = Rule.create(data);
 
-    return res.json(rule);
+    return res.status(201).json(rule);
   }
 
   public show(req: Request, res: Response): any {
