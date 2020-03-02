@@ -1,7 +1,7 @@
-import express from "express";
-import morgan from "morgan";
+import express from 'express';
+import morgan from 'morgan';
 
-import routes from "./routes";
+import routes from './routes';
 
 class App {
   server: express.Application;
@@ -13,14 +13,14 @@ class App {
     this.routes();
   }
 
-  middlewares() {
+  middlewares(): void {
     this.server.use(express.json());
 
-    this.server.use(morgan("dev"));
+    this.server.use(morgan('dev'));
   }
 
-  routes() {
-    this.server.use("/api/v1", routes);
+  routes(): void {
+    this.server.use('/api/v1', routes);
   }
 }
 

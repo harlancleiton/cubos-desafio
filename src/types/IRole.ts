@@ -1,4 +1,4 @@
-import { IBaseModel } from "./IBaseModel";
+import { IBaseModel } from './IBaseModel';
 
 export interface IRole extends IBaseModel {
   day?: string;

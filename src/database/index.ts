@@ -1,7 +1,7 @@
-import { resolve } from "path";
-import * as fs from "fs";
+import { resolve } from 'path';
+import * as fs from 'fs';
 
-import config from "../config/database";
+import config from '../config/database';
 
 class Database {
   private db: any;
@@ -24,7 +24,7 @@ class Database {
     return data;
   }
 
-  saveData(resource: string, data: any, override?: boolean) {
+  saveData(resource: string, data: any, override?: boolean): any {
     let newData: any[];
 
     if (override) {
@@ -43,7 +43,7 @@ class Database {
       }
     }
 
-    const db = this.db;
+    const { db } = this;
 
     db[resource] = newData;
 

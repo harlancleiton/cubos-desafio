@@ -1,8 +1,8 @@
-import pluralize from "pluralize";
-import { v4 as uuidv4 } from "uuid";
+import pluralize from 'pluralize';
+import { v4 as uuidv4 } from 'uuid';
 
-import { IBaseModel } from "../types/IBaseModel";
-import database from "../database";
+import { IBaseModel } from '../types/IBaseModel';
+import database from '../database';
 
 export abstract class BaseModel implements IBaseModel {
   id: string;
@@ -12,27 +12,28 @@ export abstract class BaseModel implements IBaseModel {
   }
 
   public static create<T extends BaseModel>(data: Partial<T>): T {
-    data.id = uuidv4();
+    const newData = data;
+    newData.id = uuidv4();
 
-    const db = database.saveData(this.resource, data);
+    const db = database.saveData(this.resource, newData);
     const listData: T[] = db[this.resource];
 
-    const model = listData.find(t => t.id === data.id);
+    const model = listData.find(t => t.id === newData.id);
 
     return <T>model;
   }
 
   public static findAll<T extends BaseModel>(): T[] {
-    const data = database.readData(this.resource);
+    const data = database.readData<T>(this.resource);
 
-    return data ? data : Array();
+    return data || [];
   }
 
   public static findById<T extends BaseModel>(id: string): T | null {
     const listData = this.findAll<T>();
 
     const model = listData.find(t => t.id === id);
-    return model ? model : null;
+    return model || null;
   }
 
   public static deleteById<T extends BaseModel>(id: string): T | null {
@@ -48,8 +49,7 @@ export abstract class BaseModel implements IBaseModel {
       database.saveData(this.resource, newData, true);
 
       return model;
-    } else {
-      return null;
     }
+    return null;
   }
 }
