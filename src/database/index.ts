@@ -3,7 +3,7 @@ import * as fs from "fs";
 
 import config from "../config/database";
 
-export class Database {
+class Database {
   private db;
 
   constructor() {
@@ -24,13 +24,24 @@ export class Database {
     return data;
   }
 
-  saveData(resource: string, data: any) {
-    const resourceData = this.readData(resource);
-
+  saveData(resource: string, data: any, override?: boolean) {
     let newData: any[];
 
-    if (resourceData) newData = [...resourceData, data];
-    else newData = [data];
+    if (override) {
+      if (Array.isArray(data)) {
+        newData = data;
+      } else {
+        newData = [data];
+      }
+    } else {
+      const resourceData = this.readData(resource);
+
+      if (resourceData) {
+        newData = [...resourceData, data];
+      } else {
+        newData = [data];
+      }
+    }
 
     const db = this.db;
 
@@ -51,3 +62,5 @@ export class Database {
     return resolve(__dirname, config.database);
   }
 }
+
+export default new Database();

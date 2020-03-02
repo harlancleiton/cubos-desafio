@@ -2,12 +2,12 @@ import "dotenv/config";
 
 import app from "./App";
 
-import { Database } from "./database";
-const db = new Database();
-console.log(db.readData("rules"));
+import { Role } from "./models/Role";
 
-db.saveData("rules", { id: 2, start: "14:00" });
-
-console.log(db.readData("rules"));
+// const role = Role.create<Role>({ id: "1" });
+// console.log(role);
+// console.log(Role.deleteById("3"));
+console.log(Role.findAll());
+// console.log(Role.findById("2"));
 
 app.listen(3333);
