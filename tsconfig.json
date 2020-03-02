@@ -15,13 +15,14 @@
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
-    "typeRoots": [
-      "node_modules/@types",
-      "src/@types"
-    ],
+    "typeRoots": ["node_modules/@types", "src/@types"],
+    "paths": {
+      "@config/*": ["config/*"],
+      "@services/*": ["services/*"],
+      "@schemas/*": ["schemas/*"],
+      "@queues/*": ["queues/*"],
+      "@utils/*": ["utils/*"]
+    }
   },
-  "include": [
-    "src",
-    "__tests__"
-  ]
+  "include": ["src", "__tests__"]
 }
