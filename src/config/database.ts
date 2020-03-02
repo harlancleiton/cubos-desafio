@@ -1,3 +1,3 @@
 export default {
-  database: process.env.DB_DATABASE
+  database: String(process.env.DB_DATABASE)
 };

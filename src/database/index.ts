@@ -4,7 +4,7 @@ import * as fs from "fs";
 import config from "../config/database";
 
 class Database {
-  private db;
+  private db: any;
 
   constructor() {
     try {
@@ -18,7 +18,7 @@ class Database {
     }
   }
 
-  readData(resource: string): any[] | undefined {
+  readData<T>(resource: string): T[] | undefined {
     const data = this.db[resource];
 
     return data;
@@ -52,7 +52,7 @@ class Database {
     return db;
   }
 
-  private updateDatabase(newDb) {
+  private updateDatabase<T>(newDb: T): void {
     fs.writeFileSync(this.dbJsonPath, JSON.stringify(newDb));
 
     this.db = newDb;

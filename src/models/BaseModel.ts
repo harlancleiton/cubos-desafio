@@ -1,4 +1,6 @@
-import * as pluralize from "pluralize";
+import pluralize from "pluralize";
+import { v4 as uuidv4 } from "uuid";
+
 import { IBaseModel } from "../types/IBaseModel";
 import database from "../database";
 
@@ -10,24 +12,27 @@ export abstract class BaseModel implements IBaseModel {
   }
 
   public static create<T extends BaseModel>(data: Partial<T>): T {
-    if (!data.id) data.id = "1";
+    data.id = uuidv4();
 
     const db = database.saveData(this.resource, data);
-    const listData = db[this.resource];
+    const listData: T[] = db[this.resource];
 
     const model = listData.find(t => t.id === data.id);
-    return model;
+
+    return <T>model;
   }
 
   public static findAll<T extends BaseModel>(): T[] {
-    return database.readData(this.resource);
+    const data = database.readData(this.resource);
+
+    return data ? data : Array();
   }
 
   public static findById<T extends BaseModel>(id: string): T | null {
     const listData = this.findAll<T>();
 
     const model = listData.find(t => t.id === id);
-    return model;
+    return model ? model : null;
   }
 
   public static deleteById<T extends BaseModel>(id: string): T | null {
