@@ -1,4 +1,11 @@
-import { isWithinInterval, parse } from 'date-fns';
+import {
+  isWithinInterval,
+  parse,
+  isSameDay,
+  getDay,
+  differenceInCalendarDays,
+  eachDayOfInterval,
+} from 'date-fns';
 
 import { IRule } from '../types/IRule';
 import { RuleType } from '../types/RuleType';
@@ -24,7 +31,8 @@ export class Rule extends BaseModel implements IRule {
           return this.isDaily(rule);
         case RuleType.SPECIFIC:
           return this.isSpecific(rule, start, end);
-        // TODO weekly
+        case RuleType.WEEKLY:
+          return this.isWeekly(rule, start, end);
         default:
           return false;
       }
@@ -47,14 +55,48 @@ export class Rule extends BaseModel implements IRule {
     }
 
     const { day } = rule;
-    const dayParsed = parse(String(day), 'dd-MM-yyyy', new Date());
+    const dayParsed = this.parseDate(String(day));
 
-    const startParsed = parse(start, 'dd-MM-yyyy', new Date());
-    const endParsed = parse(end, 'dd-MM-yyyy', new Date());
+    const startParsed = this.parseDate(start);
+    const endParsed = this.parseDate(end);
 
     return isWithinInterval(dayParsed, {
       start: startParsed,
       end: endParsed,
     });
+  }
+
+  private static isWeekly(rule: Rule, start: string, end: string): boolean {
+    if (rule.type !== RuleType.WEEKLY) {
+      return false;
+    }
+
+    const { daysOfWeek } = rule;
+    const startParsed = this.parseDate(start);
+    const endParsed = this.parseDate(end);
+
+    const startDay = getDay(startParsed);
+
+    if (isSameDay(startParsed, endParsed)) {
+      return daysOfWeek.includes(startDay);
+    }
+
+    const diff = differenceInCalendarDays(endParsed, startParsed);
+    if (diff >= 7) {
+      return true;
+    }
+
+    const daysOfInterval = eachDayOfInterval({
+      start: startParsed,
+      end: endParsed,
+    });
+
+    const result = daysOfInterval.map(day => daysOfWeek.includes(getDay(day)));
+
+    return result.length > 0;
+  }
+
+  private static parseDate(s: string, formatString = 'dd-MM-yyyy'): Date {
+    return parse(s, formatString, new Date());
   }
 }
