@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "5bee855f-8c7f-4ec8-8eae-e19df58e78bc",
+		"name": "Regras",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CriarDiaria",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"type\":\"daily\",\n\t\"start\":\"12:00\",\n\t\"end\":\"13:00\"\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/rules",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"rules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CriarEspecifico",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"type\":\"specific\",\n\t\"day\":\"31-12-2019\",\n\t\"start\":\"01:00\",\n\t\"end\":\"02:00\"\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/rules",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"rules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CriarSemanal",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"type\":\"weekly\",\n\t\"daysOfWeek\":[1,3,6],\n\t\"start\":\"10:00\",\n\t\"end\":\"11:00\"\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/rules",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"rules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BuscarPorId",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/rules/0b93cb30-fdb9-49e2-a849-6ae2582366a1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"rules",
+						"0b93cb30-fdb9-49e2-a849-6ae2582366a1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ApagarRegra",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/rules/0b93cb30-fdb9-49e2-a849-6ae2582366a1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"rules",
+						"0b93cb30-fdb9-49e2-a849-6ae2582366a1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/rules",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"rules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar - Filtro",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/rules?start=30-12-2019&end=30-12-2019",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"rules"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "30-12-2019"
+						},
+						{
+							"key": "end",
+							"value": "30-12-2019"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
