@@ -25,11 +25,15 @@
 					}
 				},
 				"url": {
-					"raw": "{{base_url}}/rules",
+					"raw": "http://localhost:3333/api/v1/rules",
+					"protocol": "http",
 					"host": [
-						"{{base_url}}"
+						"localhost"
 					],
+					"port": "3333",
 					"path": [
+						"api",
+						"v1",
 						"rules"
 					]
 				}
@@ -56,11 +60,15 @@
 					}
 				},
 				"url": {
-					"raw": "{{base_url}}/rules",
+					"raw": "http://localhost:3333/api/v1/rules",
+					"protocol": "http",
 					"host": [
-						"{{base_url}}"
+						"localhost"
 					],
+					"port": "3333",
 					"path": [
+						"api",
+						"v1",
 						"rules"
 					]
 				}
@@ -87,11 +95,15 @@
 					}
 				},
 				"url": {
-					"raw": "{{base_url}}/rules",
+					"raw": "http://localhost:3333/api/v1/rules",
+					"protocol": "http",
 					"host": [
-						"{{base_url}}"
+						"localhost"
 					],
+					"port": "3333",
 					"path": [
+						"api",
+						"v1",
 						"rules"
 					]
 				}
@@ -111,11 +123,15 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/rules/0b93cb30-fdb9-49e2-a849-6ae2582366a1",
+					"raw": "http://localhost:3333/api/v1/rules/0b93cb30-fdb9-49e2-a849-6ae2582366a1",
+					"protocol": "http",
 					"host": [
-						"{{base_url}}"
+						"localhost"
 					],
+					"port": "3333",
 					"path": [
+						"api",
+						"v1",
 						"rules",
 						"0b93cb30-fdb9-49e2-a849-6ae2582366a1"
 					]
@@ -136,11 +152,15 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/rules/0b93cb30-fdb9-49e2-a849-6ae2582366a1",
+					"raw": "http://localhost:3333/api/v1/rules/0b93cb30-fdb9-49e2-a849-6ae2582366a1",
+					"protocol": "http",
 					"host": [
-						"{{base_url}}"
+						"localhost"
 					],
+					"port": "3333",
 					"path": [
+						"api",
+						"v1",
 						"rules",
 						"0b93cb30-fdb9-49e2-a849-6ae2582366a1"
 					]
@@ -161,11 +181,15 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/rules",
+					"raw": "http://localhost:3333/api/v1/rules",
+					"protocol": "http",
 					"host": [
-						"{{base_url}}"
+						"localhost"
 					],
+					"port": "3333",
 					"path": [
+						"api",
+						"v1",
 						"rules"
 					]
 				}
@@ -185,11 +209,15 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/rules?start=30-12-2019&end=30-12-2019",
+					"raw": "http://localhost:3333/api/v1/rules?start=30-12-2019&end=30-12-2019",
+					"protocol": "http",
 					"host": [
-						"{{base_url}}"
+						"localhost"
 					],
+					"port": "3333",
 					"path": [
+						"api",
+						"v1",
 						"rules"
 					],
 					"query": [
